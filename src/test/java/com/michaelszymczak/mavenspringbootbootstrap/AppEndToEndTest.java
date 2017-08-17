@@ -41,4 +41,11 @@ public class AppEndToEndTest {
                 String.class);
         assertThat(response.getBody(), equalTo("Up and running"));
     }
+
+    @Test
+    public void shouldSupportChronicleMap() throws Exception {
+        ResponseEntity<String> response = template.getForEntity(base.toString() + "/chronicle",
+                String.class);
+        assertThat(response.getBody(), equalTo("Up and running. Before: null, after: PostalCodeRange{ maxCode=7, minCode=5 }"));
+    }
 }
